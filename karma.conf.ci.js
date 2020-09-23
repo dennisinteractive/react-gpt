@@ -9,7 +9,7 @@ module.exports = function (config) {
         customLaunchers: {
             Chrome_CI: {
                 base: "Chrome",
-                flags: ["--no-sandbox"]
+                flags: []
             }
         },
         browsers: ["Chrome_CI"]
