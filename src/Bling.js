@@ -176,6 +176,12 @@ class Bling extends Component {
          */
         viewableThreshold: PropTypes.number,
         /**
+         * An optional number to trigger rendering when an ad is x amount below the fold. Overrides viewableThreshold
+         *
+         * @property viewableTriggerTop
+         */
+        viewableTriggerTop: PropTypes.number,
+        /**
          * An optional call back function to notify when the script is loaded.
          *
          * @property onScriptLoaded
@@ -518,6 +524,18 @@ class Bling extends Component {
     }
 
     foldCheck() {
+        if (
+            this.props.viewableTriggerTop &&
+            this.props.viewableTriggerTop > 0 &&
+            !this.state.inViewport
+        ) {
+            const rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+            if (rect.top - window.innerHeight < window.innerHeight - this.props.viewableTriggerTop) {
+                this.setState({inViewport: true});
+                return;
+            }
+        }
+
         if (this.state.inViewport) {
             return;
         }
