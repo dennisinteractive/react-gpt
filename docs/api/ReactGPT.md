@@ -29,6 +29,7 @@ A React component which renders [GPT](https://support.google.com/dfp_sb/answer/1
 - `onSlotOnload`(optional) - An optional event handler function for `googletag.events.SlotOnloadEvent`.
 - `renderWhenViewable`(optional) - An optional flag to indicate whether an ad should only render when it's fully in the viewport area.
 - `viewableThreshold`(optional) - An optional number to indicate how much percentage of an ad area needs to be in a viewable area before rendering. Acceptable range is between `0` and `1`.
+- `viewableTriggerTop`(optional) - An optional percentage figure to trigger render when the ad is x% below the fold.
 - `onScriptLoaded`(optional) - An optional call back function to notify when the script is loaded.
 - `onMediaQueryChange`(optional) - An optional call back function to notify when the media queries change on the break point specified in the `sizeMapping`.
 - `style`(optional) - An optional object to be applied as `style` props to the container div. **This prop is only applied once in initial render.** If you want to apply style to the ad and change it frequently, apply style to the container.
