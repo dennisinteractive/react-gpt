@@ -523,6 +523,15 @@ class Bling extends Component {
             : Bling._config.renderWhenViewable;
     }
 
+    isDisplayNone(rect) {
+        return (
+            rect.top === 0 &&
+            rect.bottom === 0 &&
+            rect.left === 0 &&
+            rect.right === 0
+        );
+    }
+
     foldCheck() {
         if (this.state.inViewport) {
             return;
@@ -533,11 +542,13 @@ class Bling extends Component {
             this.props.viewableTriggerTop > 0
         ) {
             const rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
-            const triggerPercentVal =
-                window.innerHeight / 100 * this.props.viewableTriggerTop;
-            if (rect.top <= window.innerHeight + triggerPercentVal) {
-                this.setState({inViewport: true});
-                return;
+            if (!this.isDisplayNone(rect)) {
+                const triggerPercentVal =
+                    window.innerHeight / 100 * this.props.viewableTriggerTop;
+                if (rect.top <= window.innerHeight + triggerPercentVal) {
+                    this.setState({inViewport: true});
+                    return;
+                }
             }
         }
 
