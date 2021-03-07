@@ -101,7 +101,7 @@ describe("createManager", () => {
 
     it("loads gpt", done => {
         adManager
-            .load("//www.googletagservices.com/tag/js/gpt.js")
+            .load("https://securepubads.g.doubleclick.net/tag/js/gpt.js")
             .then(result => {
                 expect(result).to.be.an("object");
                 expect(adManager.isLoaded).to.be.true;
